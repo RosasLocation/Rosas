@@ -1,0 +1,9 @@
+{
+  "name": "location-rosas",
+  "version": "1.0.0",
+  "description": "Site de location à Rosas",
+  "type": "module",
+  "scripts": {
+    "dev": "python -m http.server 3000"
+  }
+}

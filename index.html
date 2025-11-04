@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Location Rosas</title>
+  <meta name="description" content="Appartement à Rosas (Roses, Costa Brava) – Vue mer, confort et réservation directe. Page-pont optimisée pour Instagram." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Appartement à Rosas – Vue mer & confort" />
+  <meta property="og:description" content="Découvrez notre appartement vue sur la mer à Rosas. Réservation directe et tarifs en ligne." />
+  <meta property="og:url" content="https://rosas-vacances.vercel.app" />
+  <meta property="og:image" content="https://www.location-rosas.fr/wp-content/uploads/2025/07/LOGO-trsp-275x206.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root {
+      --bg: #f5efd0;
+      --card: #ffffff;
+      --text: #333333;
+      --muted: #6B7280;
+      --accent: #ff6b6b;
+      --accent-2: #3ab7d3;
+      --btn: #ff6b6b;
+      --btn-text: #ffffff;
+      --stroke: #3ab7d3;
+      --chip: #fff6f3;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .container { max-width: 980px; margin: 0 auto; padding: 20px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { width: 44px; height: 44px; border-radius: 12px; object-fit: cover; box-shadow: 0 8px 30px #0008; }
+    .brand h1 { font-size: 18px; margin: 0; }
+    .muted { color: var(--muted); }
+    .card { background: var(--card); border: 2px solid var(--stroke); border-radius: 16px; padding: 24px; box-shadow: 0 6px 20px #00000014; margin-bottom: 20px; }
+    .hero { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+    .hero h2 { margin: 0; font-size: 28px; line-height: 1.15; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; color: var(--text); }
+    .hero p { margin: 12px 0 0; font-size: 16px; }
+    .cta-grid { 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      gap: 12px; 
+      margin-top: 20px; 
+    }
+    .cta-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .btn { appearance: none; border: none; background: var(--btn); color: var(--btn-text); font-weight: 700; padding: 14px 20px; border-radius: 12px; cursor: pointer; text-align: center; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 6px 16px #ff6b6b33; font-size: 16px; }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); background: var(--accent-2); box-shadow: 0 8px 20px #3ab7d333; }
+    .btn.secondary { background: transparent; border: 2px solid var(--accent); color: var(--accent); }
+    .btn.secondary:hover { background: var(--accent-2); color: #fff; border-color: var(--accent-2); }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .thumb { border-radius: 14px; overflow: hidden; aspect-ratio: 16/9; background: #ffffff; border: 2px solid var(--stroke); transition: transform 0.3s ease; }
+    .thumb:hover { transform: scale(1.02); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.05); transition: transform 0.3s ease; }
+    .thumb:hover img { transform: scale(1.05); }
+    
+    .logo-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 16px; }
+    .logo-row a { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      padding: 12px 16px; 
+      border-radius: 10px; 
+      border: 2px solid var(--accent);
+      background: var(--chip); 
+      text-decoration: none; 
+      color: var(--text); 
+      transition: all 0.3s ease; 
+      font-weight: 600; 
+    }
+    .logo-row a:hover { 
+      background: var(--accent-2); 
+      color: #fff; 
+      transform: translateY(-2px); 
+      border-color: var(--accent-2); 
+    }
+    .logo-row svg { width: 20px; height: 20px; }
+    
+    footer { margin: 40px 0 20px; text-align: center; padding: 20px; color: var(--muted); font-size: 14px; }
+    
+    .lightwidget-wrapper {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid var(--stroke);
+      margin: 20px 0;
+    }
+    .lightwidget-widget {
+      border-radius: 14px !important;
+      min-height: 400px;
+      width: 100%;
+      border: 0;
+    }
+    
+    .rs-cta { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 12px; 
+      margin-top: 20px; 
+    }
+    .rs-cta .btn { 
+      min-width: auto; 
+      flex: none; 
+    }
+    
+    @media (min-width: 768px) {
+      .hero { grid-template-columns: 1.05fr .95fr; }
+      .hero h2 { font-size: 36px; }
+      .grid { grid-template-columns: repeat(3, 1fr); }
+      
+      .rs-cta { 
+        display: flex; 
+        gap: 10px; 
+        justify-content: center; 
+      }
+      .rs-cta .btn { 
+        flex: 1; 
+        min-width: 200px; 
+      }
+    }
+    
+    @media (max-width: 767px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .brand { margin-bottom: 10px; }
+      
+      .cta-row { 
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+      }
+      
+      .btn { 
+        padding: 12px 16px; 
+        font-size: 14px; 
+      }
+      
+      .logo-row { 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+      }
+      
+      .rs-cta { 
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+      }
+      
+      .lightwidget-widget { min-height: 600px; }
+    }
+    
+    .floating-wa {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 50;
+    }
+    .floating-wa a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 8px 18px rgba(255, 107, 107, 0.5);
+      transition: transform 0.2s, background 0.2s, filter 0.2s;
+    }
+    .floating-wa a:hover {
+      background: var(--accent-2);
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+    .floating-wa svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    
+    h3 { margin-top: 0; color: var(--accent-2); font-size: 22px; }
+  </style>
+
+  <link rel="icon" href="https://www.location-rosas.fr/wp-content/uploads/2025/07/LOGO-trsp-275x206.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="https://www.location-rosas.fr/wp-content/uploads/2025/07/LOGO-trsp-275x206.png" alt="Logo Location Rosas (soleil & vagues)" />
+        <div>
+          <h1>Appartement à Rosas</h1>
+          <div class="muted">Costa Brava • Espagne</div>
+        </div>
+      </div>
+      <div class="muted">Location en bord de mer – Vacances sereines sans intermédiaire</div>
+    </header>
+
+    <section class="card hero fade-in">
+      <div>
+        <h2>Vue mer, confort et accès direct</h2>
+        <p>Nous privilégions un contact simple, rapide et direct. Pour toute question ou précision, utilisez le bouton WhatsApp présent en bas de cette page : nous vous répondrons dans les plus brefs délais.</p>
+        
+        <div class="cta-grid">
+          <div class="cta-row">
+            <a id="btn-reserver" class="btn" href="https://www.location-rosas.fr/reserver/">Réserver</a>
+            <a id="btn-tarifs" class="btn secondary" href="https://www.location-rosas.fr/tarifs/">Tarifs</a>
+          </div>
+          
+          <div class="cta-row">
+            <a id="btn-booking" class="btn" href="https://www.location-rosas.fr/en/booking/">Booking</a>
+            <a id="btn-rates" class="btn secondary" href="https://www.location-rosas.fr/en/rates/">Rates</a>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="thumb">
+          <img loading="lazy"
+               src="terrasse-rosas.webp"
+               alt="Terrasse vue mer à Rosas, avec table et voilages blancs" />
+        </div>
+        <div class="thumb">
+          <img loading="lazy"
+               src="piscine-rosas.webp"
+               alt="Piscine bordée de palmiers et mer en arrière-plan à Rosas" />
+        </div>
+        <div class="thumb">
+          <img loading="lazy"
+               src="plage-rosas.webp"
+               alt="Promenade de Rosas bordée de palmiers et plage de sable fin" />
+        </div>
+      </div>
+    </section>
+
+    <section class="card fade-in">
+      <h3>Inspirations depuis nos réseaux</h3>
+      <p class="muted">Moments partagés : terrasse, plage, golden hour…</p>
+
+      <!-- Widget LightWidget CORRIGÉ -->
+      <div class="lightwidget-wrapper">
+        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+        <iframe 
+          src="//lightwidget.com/widgets/f225d6dc26e7527eb5c3cbd12907d7bd.html" 
+          scrolling="no" 
+          allowtransparency="true" 
+          class="lightwidget-widget"
+          style="width:100%;border:0;overflow:hidden;">
+        </iframe>
+      </div>
+
+      <div class="rs-cta">
+        <a class="btn secondary" href="https://www.instagram.com/location.rosas/" target="_blank" rel="noopener noreferrer">Voir +</a>
+        <a class="btn secondary" href="https://fr.pinterest.com/adminrosasloc/" target="_blank" rel="noopener noreferrer">Voir +</a>
+      </div>
+    </section>
+
+    <section class="card fade-in">
+      <h3>Retrouvez-nous</h3>
+      <p class="muted">Suivez-nous sur les réseaux sociaux...</p>
+      
+      <div class="logo-row">
+        <a id="link-fb" href="https://www.facebook.com/people/Location-Rosas-Vue-mer-Espagne/61579868753622/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 0-1.7.8-1.7 1.6v1.9H17l-.4 2.9h-2.8v7A10 10 0 0 0 22 12Z"/></svg>
+          Facebook
+        </a>
+        <a id="link-ig" href="https://www.instagram.com/location.rosas/" target="_blank" rel="noopener noreferrer"> 
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 14.8 12 2.8 2.8 0 0 0 12 9.2ZM18.5 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/></svg>
+          Instagram
+        </a>
+        <a id="link-pn" href="https://fr.pinterest.com/adminrosasloc/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.56 2 3 5.82 3 10.22c0 2.64 1.46 5.96 3.81 6.99.36.16.56.09.65-.25.06-.24.23-.84.3-1.09a.62.62 0 0 0-.15-.63c-.78-.95-1.41-2.69-1.41-4.31 0-4.17 3.15-7.94 8.2-7.94 4.47 0 7.6 2.9 7.6 7.05 0 4.94-2.61 8.37-6.01 8.37-1.9 0-3.31-1.57-2.86-3.5.55-2.33 1.6-4.84 1.6-6.52 0-1.5-.81-2.75-2.5-2.75-1.98 0-3.58 2.05-3.58 4.79 0 1.75.59 2.94.59 2.94l-2.38 10.08c-.71 3.02.09 6.73.15 7.09.08.33.3.36.45.14.23-.31 3.19-4.51 4.18-7.49.28-.87 1.61-5.01 1.61-5.01.8 1.53 3.13 2.87 5.61 2.87 3.71 0 6.49-3.38 6.49-8.01C22.99 5.57 18.56 2 12.04 2Z"/></svg>
+          Pinterest
+        </a>
+      </div>
+    </section>
+
+    <footer class="muted">
+      <p>&copy; LPExPMA © 2025 | Créé par Design Costa Brava | Tous droits réservés</p>
+      <p>Location Rosas – Vacances en Espagne</p>
+    </footer>
+  </div>
+
+  <div class="floating-wa">
+    <a id="wa-link"
+       href="https://wa.me/33632470724?text=Bonjour%20👋%20Je%20souhaite%20plus%20d'infos%20sur%20la%20location%20à%20Rosas"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Réserver sur WhatsApp">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M19.11 17.33c-.27-.14-1.6-.79-1.84-.88-.25-.09-.43-.14-.62.14-.18.27-.71.88-.87 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.14-1.31-.79-.7-1.32-1.56-1.48-1.82-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.52-.44-.45-.62-.46-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.99 2.66 1.12 2.85.14.18 1.95 2.98 4.73 4.18 2.78 1.2 2.78.8 3.27.75.5-.05 1.6-.65 1.83-1.27.23-.62.23-1.14.16-1.27-.07-.14-.23-.2-.5-.34zM26.6 5.4C23.7 2.5 19.97 1 16 1 8.84 1 3 6.84 3 14c0 2.44.64 4.82 1.85 6.91L3 31l10.29-1.8C15.29 29.73 15.64 29.8 16 29.8c7.16 0 13-5.84 13-13 0-3.97-1.5-7.7-4.4-10.6zM16 27.4c-.3 0-.6-.02-.9-.05l-.64-.06-6.07 1.06 1.08-5.92-.31-.51C7.23 20.1 6.6 17.98 6.6 16 6.6 8.98 12.98 3.4 20 3.4c3 0 5.82 1.17 7.94 3.3 2.13 2.12 3.3 4.95 3.3 7.94 0 7.02-5.38 12.6-12.4 12.6z"/>
+      </svg>
+      Réserver sur WhatsApp
+    </a>
+  </div>
+
+  <script>
+    const config = {
+      reserver: 'https://www.location-rosas.fr/reserver/',
+      tarifs: 'https://www.location-rosas.fr/tarifs/',
+      booking: 'https://www.location-rosas.fr/en/booking/',
+      rates: 'https://www.location-rosas.fr/en/rates/',
+      facebook: 'https://www.facebook.com/people/Location-Rosas-Vue-mer-Espagne/61579868753622/',
+      instagram: 'https://www.instagram.com/location.rosas/',
+      pinterest: 'https://fr.pinterest.com/adminrosasloc/',
+      whatsapp: 'https://wa.me/33632470724?text=Bonjour%20👋%20Je%20souhaite%20plus%20d\'infos%20sur%20la%20location%20à%20Rosas'
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('btn-reserver').href = config.reserver;
+      document.getElementById('btn-tarifs').href = config.tarifs;
+      document.getElementById('btn-booking').href = config.booking;
+      document.getElementById('btn-rates').href = config.rates;
+      document.getElementById('link-fb').href = config.facebook;
+      document.getElementById('link-ig').href = config.instagram;
+      document.getElementById('link-pn').href = config.pinterest;
+      document.getElementById('wa-link').href = config.whatsapp;
+
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      fadeElements.forEach(el => {
+        observer.observe(el);
+      });
+
+      document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const linkText = this.textContent.trim();
+          console.log('Clic sur:', linkText, this.href);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
