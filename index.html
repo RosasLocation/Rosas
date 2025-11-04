@@ -93,17 +93,19 @@
     
     footer { margin: 40px 0 20px; text-align: center; padding: 20px; color: var(--muted); font-size: 14px; }
     
-    .lightwidget-wrapper {
-      border-radius: 14px;
+    /* LightWidget Styles OPTIMISÉS */
+    .lightwidget-wrapper { 
+      border: 0; 
+      border-radius: 0; 
       overflow: hidden;
-      border: 2px solid var(--stroke);
+      background: #f5efd0;
       margin: 20px 0;
     }
     .lightwidget-widget {
-      border-radius: 14px !important;
+      border: 0 !important;
+      border-radius: 0 !important;
       min-height: 400px;
       width: 100%;
-      border: 0;
     }
     
     .rs-cta { 
@@ -251,27 +253,35 @@
       </div>
     </section>
 
-    <!-- SECTION — Feed Instagram avec LightWidget CORRIGÉ -->
+    <!-- SECTION — Feed Instagram avec LightWidget OPTIMISÉ -->
     <section class="card fade-in">
       <h3>Inspirations depuis nos réseaux</h3>
       <p class="muted">Moments partagés : terrasse, plage, golden hour…</p>
 
-      <!-- Widget LightWidget CORRECTEMENT INTÉGRÉ -->
+      <!-- LightWidget (mise à jour) -->
       <div class="lightwidget-wrapper">
-        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-        <iframe 
-          src="//lightwidget.com/widgets/9e1b12f752b55e0f9c89d8280f331329.html" 
-          scrolling="no" 
-          allowtransparency="true" 
-          class="lightwidget-widget" 
+        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js" defer></script>
+        <iframe
+          id="lw"
+          src="https://lightwidget.com/widgets/9e1b12f752b55e0f9c89d8280f331329.html?v=1"
+          loading="lazy"
+          scrolling="no"
+          allowtransparency="true"
+          class="lightwidget-widget"
           style="width:100%;border:0;overflow:hidden;">
         </iframe>
       </div>
 
-      <!-- Boutons "Voir +" -->
+      <!-- Boutons réseaux sociaux + actualisation -->
       <div class="rs-cta">
         <a class="btn secondary" href="https://www.instagram.com/location.rosas/" target="_blank" rel="noopener noreferrer">Voir +</a>
         <a class="btn secondary" href="https://fr.pinterest.com/adminrosasloc/" target="_blank" rel="noopener noreferrer">Voir +</a>
+        <button class="btn secondary" onclick="
+          var el=document.getElementById('lw');
+          var url=new URL(el.src);
+          url.searchParams.set('r', Date.now()); // bust total immédiat
+          el.src=url.toString();
+        ">Actualiser les posts</button>
       </div>
     </section>
 
@@ -336,8 +346,17 @@
       document.getElementById('link-pn').href = config.pinterest;
       document.getElementById('wa-link').href = config.whatsapp;
 
+      // Cache-buster quotidien pour LightWidget
+      (function () {
+        var el = document.getElementById('lw');
+        if (!el) return;
+        var url = new URL(el.src);
+        url.searchParams.set('d', new Date().toISOString().slice(0,10)); // YYYY-MM-DD
+        el.src = url.toString();
+      })();
+
+      // Animations au défilement
       const fadeElements = document.querySelectorAll('.fade-in');
-      
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -350,6 +369,7 @@
         observer.observe(el);
       });
 
+      // Tracking des clics
       document.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function(e) {
           const linkText = this.textContent.trim();
