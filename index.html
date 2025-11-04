@@ -93,19 +93,30 @@
     
     footer { margin: 40px 0 20px; text-align: center; padding: 20px; color: var(--muted); font-size: 14px; }
     
-    /* LightWidget Styles OPTIMISÉS */
-    .lightwidget-wrapper { 
-      border: 0; 
-      border-radius: 0; 
-      overflow: hidden;
+    /* LightWidget Styles CORRIGÉS - Hauteur automatique */
+    .lightwidget-wrapper {
       background: #f5efd0;
       margin: 20px 0;
+      border: 0;
+      border-radius: 0;
+      overflow: hidden;
     }
+
+    /* Iframe : aucune hauteur forcée */
     .lightwidget-widget {
-      border: 0 !important;
-      border-radius: 0 !important;
-      min-height: 400px;
       width: 100%;
+      display: block;
+      border: 0 !important;
+      height: auto !important;
+      min-height: 0 !important;
+    }
+
+    /* Pas de règle spéciale mobile : on laisse le script gérer la hauteur */
+    @media (max-width: 767px) {
+      .lightwidget-widget {
+        height: auto !important;
+        min-height: 0 !important;
+      }
     }
     
     .rs-cta { 
@@ -156,11 +167,9 @@
       }
       
       .rs-cta { 
-        grid-template-columns: 1fr 1fr; 
+        grid-template-columns: 1fr 1fr 1fr; 
         gap: 10px;
       }
-      
-      .lightwidget-widget { min-height: 600px; }
     }
     
     .floating-wa {
@@ -253,17 +262,17 @@
       </div>
     </section>
 
-    <!-- SECTION — Feed Instagram avec LightWidget OPTIMISÉ -->
+    <!-- SECTION — Feed Instagram avec LightWidget CORRIGÉ -->
     <section class="card fade-in">
       <h3>Inspirations depuis nos réseaux</h3>
       <p class="muted">Moments partagés : terrasse, plage, golden hour…</p>
 
-      <!-- LightWidget (mise à jour) -->
+      <!-- LightWidget CORRIGÉ - Script SANS defer -->
       <div class="lightwidget-wrapper">
-        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js" defer></script>
+        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
         <iframe
           id="lw"
-          src="https://lightwidget.com/widgets/9e1b12f752b55e0f9c89d8280f331329.html?v=1"
+          src="https://lightwidget.com/widgets/9e1b12f752b55e0f9c89d8280f331329.html?v=2"
           loading="lazy"
           scrolling="no"
           allowtransparency="true"
@@ -281,7 +290,7 @@
           var url=new URL(el.src);
           url.searchParams.set('r', Date.now()); // bust total immédiat
           el.src=url.toString();
-        ">Actualiser les posts</button>
+        ">Actualiser</button>
       </div>
     </section>
 
@@ -346,12 +355,12 @@
       document.getElementById('link-pn').href = config.pinterest;
       document.getElementById('wa-link').href = config.whatsapp;
 
-      // Cache-buster quotidien pour LightWidget
+      // Cache-buster pour LightWidget (une fois)
       (function () {
         var el = document.getElementById('lw');
         if (!el) return;
         var url = new URL(el.src);
-        url.searchParams.set('d', new Date().toISOString().slice(0,10)); // YYYY-MM-DD
+        url.searchParams.set('r', Date.now()); // bust cache une fois
         el.src = url.toString();
       })();
 
