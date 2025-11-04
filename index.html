@@ -106,17 +106,8 @@
     .lightwidget-widget {
       width: 100%;
       display: block;
-      border: 0 !important;
-      height: auto !important;
-      min-height: 0 !important;
-    }
-
-    /* Pas de règle spéciale mobile : on laisse le script gérer la hauteur */
-    @media (max-width: 767px) {
-      .lightwidget-widget {
-        height: auto !important;
-        min-height: 0 !important;
-      }
+      border: 0;
+      /* pas de height / min-height ici */
     }
     
     .rs-cta { 
@@ -267,13 +258,12 @@
       <h3>Inspirations depuis nos réseaux</h3>
       <p class="muted">Moments partagés : terrasse, plage, golden hour…</p>
 
-      <!-- LightWidget CORRIGÉ - Script SANS defer -->
+      <!-- LightWidget CORRIGÉ - Script AVANT iframe, SANS lazy loading -->
       <div class="lightwidget-wrapper">
         <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
         <iframe
           id="lw"
-          src="https://lightwidget.com/widgets/9e1b12f752b55e0f9c89d8280f331329.html?v=2"
-          loading="lazy"
+          src="https://lightwidget.com/widgets/9e1b12f752b55e0f9c89d8280f331329.html?v=4"
           scrolling="no"
           allowtransparency="true"
           class="lightwidget-widget"
