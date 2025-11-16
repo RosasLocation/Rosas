@@ -41,82 +41,113 @@ export default async function handler(req, res) {
         ? "book seaview apartment Roses Spain"
         : "location front de mer Roses direct propriétaire");
 
-    // 2) Prompt en fonction de la langue (version finale, avec style et vrais liens)
+    // 2) Prompt en fonction de la langue (version finale premium)
     const prompt = isEnglish
       ? `
 Write a landing page in English of about 550 words.
 
 Topic: ${sujet}
-Main SEO keyword: "${keyword}".
+Main transactional keyword: "${keyword}".
 
 Tone and style:
-- Warm, sensitive, slightly funny and a bit offbeat.
-- Narrative style recalling a spoken rhythm, with small digressions, tender humour, and direct addresses to the reader.
-- No corporate brochure tone.
+- Warm, soft, premium, human, with gentle sensory details.
+- Calm, elegant, reassuring, like a thoughtful and welcoming host.
+- Subtle imagery, clarity first, no commercial push.
+- Smooth transitions, short to medium sentences.
+- No poetic overflow, no heavy humor, no corporate tone.
 
 Goal:
-- Convince a visitor to book a seaview holiday rental in Roses, Spain, directly with the owner (no commission).
-- Create trust and desire, without giving any precise factual details.
+- Make the reader feel the peaceful experience of staying in Roses.
+- Build trust as a direct-owner host who cares.
+- Encourage booking without pressure.
+- Highlight the benefits of direct booking: serenity, comfort, no commission.
 
-Hard constraints:
-- No dates, prices, numbers, addresses, brand names or exact place names.
-- No precise historical facts, no named beaches, no restaurant or hotel names, no street names.
-- Everything must stay general, impressionistic and narrative, not factual.
+Strict constraints:
+- No dates, prices, numbers, addresses, brand names.
+- No exact place names, no beaches, no restaurants, no landmarks.
+- No historical facts.
+- No verifiable or precise real-world details.
+- No bullet lists, paragraphs <p> only.
 
-Structure (HTML inside the content):
-- Start with a <h1> that can be used as the main title.
-- Use several <h2> subtitles to structure the page.
-- Use only <p> for paragraphs (no lists).
-- Include a "3 advantages" block as three consecutive <p> paragraphs starting with "Advantage 1:", "Advantage 2:", "Advantage 3:".
-- Include one short "testimonial" block in a <p>, written in first person, as if a happy guest was speaking (but with no precise facts).
-- Include two call-to-action paragraphs <p>:
-  - one inviting the reader to check availabilities for their dates, with a clickable link to https://www.location-rosas.fr/en/booking/ and optionally a mention of https://www.location-rosas.fr/en/rates/
-  - one inviting the reader to send a WhatsApp message to ask for a tailored offer, with a clickable link to https://api.whatsapp.com/send/?phone=33632470724&text=Bonjour%2C+je+souhaite+r%C3%A9server+un+s%C3%A9jour+%C3%A0+Rosas+%EF%BF%BD&type=phone_number&app_absent=0
-- Near the end, add a <p> that reassures with "no commission, direct booking with the owner" and "secure online payment, like with Stripe or similar services".
+Required HTML structure:
+- <h1> with a natural, elegant, keyword-containing title.
+- Several <h2> sections with soft guiding tone.
+- Narrative <p> paragraphs with sensory warmth.
+- A "3 advantages" block: three consecutive <p> paragraphs starting with:
+    Advantage 1:
+    Advantage 2:
+    Advantage 3:
+- A short first-person "testimonial" <p>.
+- Two CTAs as <p>:
+    1) Link to https://www.location-rosas.fr/en/booking/
+       (may mention https://www.location-rosas.fr/en/rates/)
+    2) WhatsApp link:
+       https://api.whatsapp.com/send/?phone=33632470724&text=Hello%2C+I%20would%20like%20to%20book%20a%20stay%20in%20Roses&type=phone_number&app_absent=0
+- One reassurance paragraph:
+    "direct booking with the owner", "no commission", "secure online payment, like Stripe or similar services".
+
+Automatic SEO to include:
+- Generate a <meta-title> with the main keyword + one soft benefit.
+- Generate a <meta-description> under 150 characters, warm, natural, containing the keyword once and no over-optimization.
 
 Output:
-- A coherent HTML-like text using <h1>, <h2> and <p>, ready to be pasted into WordPress.
+- Clean HTML: <h1>, <h2>, <p>, <meta-title>, <meta-description>.
+- A coherent, premium, human, reassuring landing page.
       `.trim()
       : `
-Écris une page de destination (landing page) en français d’environ 550 mots.
+Écris une landing page en français d'environ 550 mots.
 
 Sujet : ${sujet}
-Mot-clé SEO principal : « ${keyword} ».
+Mot-clé principal (transactionnel) : « ${keyword} ».
 
-Ton et style :
-- ton vivant, sensible, drôle, légèrement décalé.
-- style narratif rappelant l’écriture de Juliette Arnaud : rythme oral, humour tendre, petites digressions, adresses directes au lecteur.
-- pas de ton plaquette ou “brochure commerciale”.
+Style attendu :
+- Ton chaleureux, apaisant, premium, avec une douceur naturelle.
+- Sensations subtiles, images lumineuses, détails sensoriels délicats.
+- Une voix humaine, simple, accueillante, rassurante, jamais commerciale.
+- Petites touches émotionnelles, clarté élégante, transitions fluides.
+- Pas de digressions trop littéraires. Pas d'humour lourd. Pas de surcharge poétique.
 
 Objectif :
-- convaincre un visiteur de réserver une location de vacances en bord de mer à Rosas, en Espagne, directement auprès du propriétaire (sans commission).
-- inspirer confiance, donner envie, sans entrer dans des détails factuels précis.
+- Faire ressentir la tranquillité d'un séjour à Rosas.
+- Rassurer le lecteur comme un propriétaire bienveillant et sincère.
+- Donner envie de réserver, sans pression.
+- Mettre en avant l'expérience : calme, vue mer, simplicité, confort.
+- Souligner discrètement les bénéfices du "direct propriétaire, sans commission".
 
 Contraintes strictes :
-- ne donne aucune date, aucun prix, aucun chiffre, aucune adresse, aucun nom de marque ni de lieu exact.
-- ne mentionne aucun fait historique précis, aucun nom de plage, de restaurant, d’hôtel ou de rue.
-- reste général, impressionniste et narratif, pas factuel.
-- ne cite aucun élément vérifiable ou facilement contestable.
+- Aucune date, aucun prix, aucun chiffre, aucune adresse, aucun nom de marque.
+- Aucun lieu précis, aucun monument, aucun quartier nommé.
+- Aucun fait historique.
+- Aucun élément vérifiable (restaurants, noms propres, plages, entités réelles).
+- Pas de listes en puces, uniquement des paragraphes <p>.
+- Pas de ton commercial agressif.
 
-Structure (HTML dans le contenu) :
-- commence par un <h1> qui servira de titre principal.
-- utilise plusieurs <h2> pour structurer la page.
-- utilise uniquement des paragraphes <p> pour le texte (pas de listes).
-- intègre un bloc « 3 avantages » sous forme de 3 paragraphes <p> consécutifs, commençant par « Avantage 1 : », « Avantage 2 : », « Avantage 3 : ».
-- intègre un court bloc « témoignage » dans un <p>, écrit à la première personne, comme si un vacancier satisfait racontait son séjour (sans élément factuel précis).
-- ajoute deux paragraphes d’appel à l’action (CTA) en <p> :
-  - l’un qui invite le lecteur à voir les disponibilités pour ses dates, avec un lien cliquable vers https://www.location-rosas.fr/reserver/ et, si tu le souhaites, une mention de https://www.location-rosas.fr/tarifs/
-  - l’autre qui invite le lecteur à envoyer un message WhatsApp pour demander une offre personnalisée, avec un lien cliquable vers https://api.whatsapp.com/send/?phone=33632470724&text=Bonjour%2C+je+souhaite+r%C3%A9server+un+s%C3%A9jour+%C3%A0+Rosas+%EF%BF%BD&type=phone_number&app_absent=0
-- vers la fin de la page, ajoute un <p> qui rassure en mentionnant « sans commission, réservation en direct avec le propriétaire » et « paiement en ligne sécurisé, comme avec Stripe ou un service équivalent ».
+Structure HTML attendue :
+- <h1> : titre principal impactant, naturel, élégant, contenant le mot-clé de manière fluide.
+- Plusieurs <h2> structurants, doux et rassurants.
+- Paragraphes <p> narratifs, sensoriels, humains.
+- Bloc "3 avantages" : trois paragraphes <p> consécutifs commençant par :
+    Avantage 1 :
+    Avantage 2 :
+    Avantage 3 :
+- Un témoignage court en <p>, écrit à la première personne (sans fait précis).
+- Deux CTA en <p> :
+    1) Lien cliquable vers https://www.location-rosas.fr/reserver/
+       (peut mentionner https://www.location-rosas.fr/tarifs/)
+    2) Lien WhatsApp cliquable vers :
+       https://api.whatsapp.com/send/?phone=33632470724&text=Bonjour%2C+je+souhaite+r%C3%A9server+un+s%C3%A9jour+%C3%A0+Rosas&type=phone_number&app_absent=0
+- Un paragraphe de réassurance mentionnant :
+    « réservation en direct avec le propriétaire », 
+    « sans commission », 
+    « paiement sécurisé, comme avec Stripe ou un service équivalent ».
 
-Style :
-- ton chaleureux, conversationnel, avec une pointe d’humour.
-- phrases courtes à moyennes.
-- transitions fluides entre les sections.
-- pas de titres « Introduction » ou « Conclusion ».
+SEO automatique (à inclure en début ou fin du texte) :
+- Génère un <meta-title> contenant le mot-clé principal + un bénéfice.
+- Génère une <meta-description> de 150 caractères max, claire, naturelle, chaleureuse, sans sur-optimisation, contenant le mot-clé une seule fois.
 
 Sortie attendue :
-- un texte cohérent, utilisable tel quel dans WordPress, contenant des balises <h1>, <h2> et <p>.
+- du HTML propre : <h1>, <h2>, <p>, <meta-title>, <meta-description>.
+- un texte cohérent, simple, premium et rassurant.
       `.trim();
 
     // 3) Appel OpenAI
