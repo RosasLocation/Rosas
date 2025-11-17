@@ -199,7 +199,9 @@ Rappels :
       body: JSON.stringify({
         title: topic.seoTitle,
         content: articleContent,
-        status: "publish"
+        status: "publish",
+        // 👇 Image mise en avant par défaut (ID = 12926)
+        featured_media: 12926
       })
     });
 
