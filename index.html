@@ -218,24 +218,9 @@
       <p class="muted">Moments partagés : terrasse, plage, golden hour…</p>
 
       <div class="lightwidget-wrapper">
-        <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-        <iframe
-          id="lw"
-          src="https://lightwidget.com/widgets/9e1b12f752b55e0f9c89d8280f331329.html?v=4"
-          scrolling="no"
-          allowtransparency="true"
-          class="lightwidget-widget"
-          style="width:100%;border:0;overflow:hidden;">
-        </iframe>
-      </div>
-
-      <div class="rs-cta">
-        <button class="btn secondary" onclick="
-          var el=document.getElementById('lw');
-          var url=new URL(el.src);
-          url.searchParams.set('r', Date.now());
-          el.src=url.toString();
-        ">Actualiser les posts</button>
+        <!-- Elfsight Instagram Feed -->
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-4a70e006-99f5-4015-bb33-6c8e2467de58" data-elfsight-app-lazy></div>
       </div>
     </section>
 
@@ -302,14 +287,7 @@
       document.getElementById('link-pn').href = config.pinterest;
       document.getElementById('wa-link').href = config.whatsapp;
 
-      (function () {
-        var el = document.getElementById('lw');
-        if (!el) return;
-        var url = new URL(el.src);
-        url.searchParams.set('r', Date.now());
-        el.src = url.toString();
-      })();
-
+      // Animations
       const fadeElements = document.querySelectorAll('.fade-in');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -323,8 +301,9 @@
         observer.observe(el);
       });
 
+      // Tracking console simple
       document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function() {
           const linkText = this.textContent.trim();
           console.log('Clic sur:', linkText, this.href);
         });
